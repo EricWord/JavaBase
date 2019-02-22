@@ -9,6 +9,39 @@ import java.io.*;
  */
 public class TestBuffered {
 
+
+    public  void testSystem() {
+
+        BufferedReader bfr = null;
+        try {
+            InputStream in = System.in;
+            InputStreamReader isr = new InputStreamReader(in);
+            bfr = new BufferedReader(isr);
+            String str;
+            while (true) {
+                System.out.println("请输入字符串：");
+                str = bfr.readLine();
+                if (str.equalsIgnoreCase("e") || str.equalsIgnoreCase("exit")) {
+                    break;
+                }
+                System.out.println(str.toUpperCase());
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (bfr != null) {
+            try {
+                bfr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
     @Test
     public void testInputStreamReader() {
         File file1 = new File("h1.txt");
