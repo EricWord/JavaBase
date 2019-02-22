@@ -5,6 +5,54 @@ import org.junit.Test;
 import java.io.*;
 
 public class TestFileInputStream {
+    @Test
+    public void testCopyFile2(){
+        copyFile2("h1.txt","h3.txt");
+
+    }
+    /**
+     * 使用FileReader和FileWriter实现文本文件的复制
+     * @param src 文件来源
+     * @param dest 目标存储地址
+     */
+
+    public void copyFile2(String src,String dest){
+        File file1 = new File(src);
+        File file2 = new File(dest);
+        FileReader fr = null;
+        FileWriter fw = null;
+        char[] c = new char[30];
+        int len;
+        try {
+            fr = new FileReader(file1);
+            fw = new FileWriter(file2);
+            while ((len=fr.read(c))!=-1){
+                fw.write(c);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        if(fr!=null){
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(fw!=null){
+            try {
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
 
 
     @Test
