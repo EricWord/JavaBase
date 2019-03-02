@@ -37,4 +37,13 @@ public class Person {
                 ", id=" + id +
                 '}';
     }
+
+    public void show(){
+
+        System.out.println("我是一个人\n");
+    }
+
+    public void displayNation(String nation){
+        System.out.println("我的国籍是:"+nation);
+    }
 }
